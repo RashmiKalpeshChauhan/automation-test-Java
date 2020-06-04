@@ -45,27 +45,27 @@ public class BookingPage {
 			e.printStackTrace();
 		} finally {
 			writer.close();
-//			huc.getInputStream().close();
-//			huc.disconnect();
+			//			huc.getInputStream().close();
+			//			huc.disconnect();
 		}
 		return response;
 	}
 	private static String readResponse(InputStream inputStream) {
-		   BufferedReader br = null;
-		   StringBuilder response = new StringBuilder();
-		   try {
-			   br = new BufferedReader(new InputStreamReader(inputStream));
-			   String line = null;
-			   while ((line = br.readLine()) != null) {
-				   response.append(line).append(NEWLINE);
-			   }			
-		   }catch (Exception e) {
-			  // LOG.error("Exception occur:",e);
-		   }
-		   return response.toString();
-	   }
-	
-	private static Booking populateBookingReq(int room,String guestType) throws IOException {
+		BufferedReader br = null;
+		StringBuilder response = new StringBuilder();
+		try {
+			br = new BufferedReader(new InputStreamReader(inputStream));
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				response.append(line).append(NEWLINE);
+			}			
+		}catch (Exception e) {
+			// LOG.error("Exception occur:",e);
+		}
+		return response.toString();
+	}
+
+	private static Booking populateBookingReq(int room,int adult ,int kid) throws IOException {
 		BasePage basePage=new BasePage();		
 		Booking booking = new Booking();
 		Dates bookingDate = new Dates();
@@ -76,29 +76,28 @@ public class BookingPage {
 		List<Room> roomls = new ArrayList<Room>();
 		Room r1 = new Room();
 		List<Guest> guestsls = new ArrayList<Guest>();
-		Guest g1 = new Guest();		
-		for(int i=0;i<=room;i++) {
-			if(guestType.equals("adult")) {
+		Guest g1 = new Guest();	
+		Guest g3 = new Guest();
+		for (int i=0;i<=1;i++) {			
+			for (int j=0;j<2;j++) {
 				g1.setType(basePage.readPropertyData("guestType1"));
-				guestsls.add(g1);	
+				//guestsls.add(g1);
+				for(int k=0;k<3;k++) {					
+					g3.setType(basePage.readPropertyData("guestType3"));
+					g3.setAge(3);
+					guestsls.add(g3);
+					break;
+				}
+
+				guestsls.add(g1);
+				break;
 			}
-			if(guestType.equals("child")) {
-				Guest g3 = new Guest();
-				g3.setType(basePage.readPropertyData("guestType3"));
-				g3.setAge(3);	
-			}
-//			Guest g2 = new Guest();
-//			g2.setType(basePage.readPropertyData("guestType2"));
-//			guestsls.add(g2);
-//			Guest g3 = new Guest();
-//			g3.setType(basePage.readPropertyData("guestType3"));
-//			g3.setAge(3);
-//			guestsls.add(g3);
-			r1.setGuest(guestsls);
-			roomls.add(r1);	
+			roomls.add(r1);				
 		}
+		r1.setGuest(guestsls);
+		roomls.add(r1);	
 		booking.setRoom(roomls);
-		
+
 		booking.setPlaceId("ChIJD7fiBh9u5kcRYJSMaMOCCwQ");
 
 		return booking;
@@ -107,19 +106,17 @@ public class BookingPage {
 	public static BookingResponse bookingReponse(int roomsize,String endpoint) throws IOException {
 		BasePage basePage=new BasePage();
 		Gson gson = new GsonBuilder().create();
-		Booking booking = populateBookingReq(roomsize,"adult");
+		Booking booking = populateBookingReq(Integer.parseInt(basePage.readPropertyData("room")),Integer.parseInt(basePage.readPropertyData("adult")),Integer.parseInt(basePage.readPropertyData("children")));
 		System.out.println("booking -->"+booking);
 		String requestJson = gson.toJson(booking);
 		System.out.println("****  Request Json  **** " + requestJson);
 		URL url = new URL(basePage.readPropertyData("url")+endpoint);
 		String[] response = callHttpUrls(url,requestJson);
 		String jsonResponse = response[1];		
-		System.out.println("****  Responce Json  **** " + jsonResponse);
-		//System.out.println("Cellulant Response Recieved : " + jsonResponse);
-		// Response JSON Parsing
+		System.out.println("****  Responce Json  **** " + jsonResponse);		
 		Gson gsonop = new GsonBuilder().create();
-		 BookingResponse bookingResponseJSon = gsonop.fromJson(jsonResponse, BookingResponse.class);
-		 return bookingResponseJSon;
+		BookingResponse bookingResponseJSon = gsonop.fromJson(jsonResponse, BookingResponse.class);
+		return bookingResponseJSon;
 	}
-	
+
 }

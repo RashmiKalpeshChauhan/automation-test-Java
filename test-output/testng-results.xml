@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1540" started-at="2020-06-04T09:02:02 GST" finished-at="2020-06-04T09:02:04 GST">
+  <suite name="Default suite" duration-ms="2001" started-at="2020-06-04T14:27:25 GST" finished-at="2020-06-04T14:27:27 GST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1540" started-at="2020-06-04T09:02:02 GST" finished-at="2020-06-04T09:02:04 GST">
+    <test name="Default test" duration-ms="2001" started-at="2020-06-04T14:27:25 GST" finished-at="2020-06-04T14:27:27 GST">
       <class name="com.qa.tests.ApiTesting1">
-        <test-method status="PASS" signature="getResponse()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="getResponse" is-config="true" duration-ms="877" started-at="2020-06-04T09:02:02 GST" finished-at="2020-06-04T09:02:03 GST">
+        <test-method status="PASS" signature="getResponse()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="getResponse" is-config="true" duration-ms="1241" started-at="2020-06-04T14:27:25 GST" finished-at="2020-06-04T14:27:26 GST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResponse -->
-        <test-method status="PASS" signature="validatedaPlaceId()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="validatedaPlaceId" duration-ms="613" started-at="2020-06-04T09:02:03 GST" finished-at="2020-06-04T09:02:04 GST">
+        <test-method status="PASS" signature="validatedaPlaceId()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="validatedaPlaceId" duration-ms="696" started-at="2020-06-04T14:27:26 GST" finished-at="2020-06-04T14:27:27 GST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validatedaPlaceId -->
-        <test-method status="PASS" signature="validatedateinquery()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="validatedateinquery" duration-ms="5" started-at="2020-06-04T09:02:04 GST" finished-at="2020-06-04T09:02:04 GST">
+        <test-method status="PASS" signature="validatedateinquery()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="validatedateinquery" duration-ms="7" started-at="2020-06-04T14:27:27 GST" finished-at="2020-06-04T14:27:27 GST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validatedateinquery -->
-        <test-method status="PASS" signature="validatetype()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="validatetype" duration-ms="2" started-at="2020-06-04T09:02:04 GST" finished-at="2020-06-04T09:02:04 GST">
+        <test-method status="PASS" signature="validatetype()[pri:0, instance:com.qa.tests.ApiTesting1@22a67b4]" name="validatetype" duration-ms="3" started-at="2020-06-04T14:27:27 GST" finished-at="2020-06-04T14:27:27 GST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validatetype -->
