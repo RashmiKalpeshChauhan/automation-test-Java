@@ -20,6 +20,7 @@ import com.qa.pojo.Guest;
 import com.qa.pojo.Room;
 
 
+
 public class BookingPage {
 	private static final String NEWLINE = System.getProperty("line.separator");
 	private static String[] callHttpUrls(final URL url, final String requestJson){
@@ -109,14 +110,24 @@ public class BookingPage {
 		Booking booking = populateBookingReq(Integer.parseInt(basePage.readPropertyData("room")),Integer.parseInt(basePage.readPropertyData("adult")),Integer.parseInt(basePage.readPropertyData("children")));
 		System.out.println("booking -->"+booking);
 		String requestJson = gson.toJson(booking);
-		System.out.println("****  Request Json  **** " + requestJson);
+		//System.out.println("****  Request Json  **** " + requestJson);
 		URL url = new URL(basePage.readPropertyData("url")+endpoint);
 		String[] response = callHttpUrls(url,requestJson);
 		String jsonResponse = response[1];		
-		System.out.println("****  Responce Json  **** " + jsonResponse);		
+		//System.out.println("****  Responce Json  **** " + jsonResponse);		
 		Gson gsonop = new GsonBuilder().create();
 		BookingResponse bookingResponseJSon = gsonop.fromJson(jsonResponse, BookingResponse.class);
 		return bookingResponseJSon;
 	}
+
+	public static Booking bookingReponse1(int roomsize) throws IOException {
+		BasePage basePage=new BasePage();
+		Gson gson = new GsonBuilder().create();
+		Booking booking = populateBookingReq(Integer.parseInt(basePage.readPropertyData("room")),Integer.parseInt(basePage.readPropertyData("adult")),Integer.parseInt(basePage.readPropertyData("children")));
+		//System.out.println("booking -->"+booking);
+		String requestJson = gson.toJson(booking);
+		return booking;
+	}
+
 
 }
