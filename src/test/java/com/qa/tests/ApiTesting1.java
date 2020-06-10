@@ -79,23 +79,24 @@ public class ApiTesting1 {
 		body(bookingResponseJSon.getQueryParametersObj().getPlaceId(), not(null)).
 		log().all();
 	}
-	@Test
-	public void newTest() throws IOException {
-		BookingPage bookingPage=new BookingPage();
-		BasePage basePage=new BasePage();
-		RequestSpecBuilder builder = new RequestSpecBuilder();
-		RequestSpecification requestSpec = builder.build();
-		Response response = given().		
-		contentType(ContentType.JSON).
-		body(bookingPage.bookingReponse1(1)).			
-		when().
-		post("https://www.tajawal.ae/api/hotel/ahs/search/request").then()
-		.statusCode(200).
-		extract().response();
-		response.getStatusCode();
-		String jsonString =response.asString();
-		String destination = JsonPath.from(jsonString).get("type");
-		String placeId = JsonPath.from(jsonString).get("queryParametersObj");
-		System.out.println(destination);		
-	}
+//	@Test
+//	public void newTest() throws IOException {
+//		BookingPage bookingPage=new BookingPage();
+//		BasePage basePage=new BasePage();
+//		RequestSpecBuilder builder = new RequestSpecBuilder();
+//		RequestSpecification requestSpec = builder.build();
+//		Response response = given().		
+//		contentType(ContentType.JSON).
+//		body(bookingPage.bookingReponse1(1)).			
+//		when().
+//		post("https://www.tajawal.ae/api/hotel/ahs/search/request").then()
+//		.statusCode(200).
+//		extract().response();
+//		response.getStatusCode();
+//		String jsonString =response.asString();
+//		String destination = JsonPath.from(jsonString).get("type");
+//		String[] placeId = JsonPath.from(jsonString).get("queryParametersObj");
+//		System.out.println(destination);
+//		System.out.println(placeId);
+//	}
 }
